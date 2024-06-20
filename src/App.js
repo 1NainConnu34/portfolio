@@ -28,10 +28,10 @@ function App() {
           <main>
             <Home />
             <About />
-            <Experience />
-            <Projects />
+            {/* <Experience />
+            <Projects /> */}
           </main>
-          <Footer />
+          {/* <Footer /> */}
           <SocialMedia />
         </>
       )}
