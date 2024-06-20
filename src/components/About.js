@@ -150,15 +150,12 @@ const Skill = styled.div.attrs(props => ({
   justify-content: center;
   text-align: center;
   color: #ccd6f6;
-  background-color: #112240;
   padding: 1rem;
   border-radius: 10px;
   border: 2px solid #112240;
   width: 100px;
   height: 100px;
-  // transition: transform 0.3s ease, background 0.3s ease;
   position: relative;
-  // overflow: hidden;
   &:hover {
     cursor: default;
   }
