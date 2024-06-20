@@ -27,7 +27,7 @@ const Header = () => {
   }, [lastScrollY]);
 
   return (
-    <Nav scrollDirection={scrollDirection}>
+    <Nav $scrollDirection={scrollDirection}>
       <Logo href="#home" onClick={(e) => handleClick(e, 'home')}>
         <Circle>
           <svg>
@@ -58,11 +58,14 @@ const fadeIn = keyframes`
   100% { opacity: 1; }
 `;
 
-const Nav = styled.nav`
-  display: flex;
+const Nav = styled.nav.attrs(props => ({
+  style: {
+    top: props.$scrollDirection === 'up' ? '0' : '-80px',
+  },
+}))
+  `display: flex;
   position: fixed;
   width: 100%;
-  top: ${props => (props.scrollDirection === 'up' ? '0' : '-80px')};
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
