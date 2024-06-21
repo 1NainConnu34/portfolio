@@ -5,8 +5,10 @@ import styled, { keyframes } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode, faLaptopCode, faDatabase, faC, faMobile } from '@fortawesome/free-solid-svg-icons';
 import profilePic from '../assets/moi.jpg';
+import useIntersectionObserver from '../hooks/useIntersectionObserver'; // Importer le hook
 
 const About = () => {
+  const [elementRef, isVisible] = useIntersectionObserver({ threshold: 0.1 });
   const [cursorPositions, setCursorPositions] = useState({ skill1: { x: 420, y: 420 }, skill2: { x: 420, y: 420 }, skill3: { x: 420, y: 420 }, skill4: { x: 420, y: 420 }, skill5: { x: 420, y: 420 } });
 
   const handleMouseMove = (e) => {
@@ -22,18 +24,18 @@ const About = () => {
   };
 
   return (
-    <AboutSection id="about" onMouseMove={handleMouseMove}>
+    <AboutSection id="about" ref={elementRef} $isVisible={isVisible} onMouseMove={handleMouseMove}>
       <ContentContainer>
-        <ImageContainer>
+        <ImageContainer $isVisible={isVisible}>
           <ProfileImage src={profilePic} alt="Alexandre Bret" />
         </ImageContainer>
         <TextContainer>
-          <Title>À propos de moi</Title>
-          <Description>
+          <Title $isVisible={isVisible}>À propos de moi</Title>
+          <Description $isVisible={isVisible}>
             Bonjour ! Je m'appelle Alexandre Bret et je suis un développeur passionné par la création de sites et d'applications innovants. 
             Avec une expertise dans les technologies modernes et une passion pour le design propre, je m'efforce de créer des expériences utilisateur uniques et engageantes.
           </Description>
-          <SkillsContainer>
+          <SkillsContainer $isVisible={isVisible}>
             <SkillComponent icon={faCode} title="Développement Frontend" skillId={'skill1'} cursorPosition={cursorPositions.skill1}/>
             <SkillComponent icon={faLaptopCode} title="Développement Backend" skillId={'skill2'} cursorPosition={cursorPositions.skill2}/>
             <SkillComponent icon={faDatabase} title="Base de Données" skillId={'skill3'} cursorPosition={cursorPositions.skill3}/>
@@ -60,16 +62,6 @@ const SkillComponent = ({ icon, title, skillId, cursorPosition }) => {
 
 export default About;
 
-const fadeIn = keyframes`
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-`;
-
-const slideIn = keyframes`
-  from { opacity: 0; transform: translateX(-100px); }
-  to { opacity: 1; transform: translateX(0); }
-`;
-
 const AboutSection = styled.section`
   height: 100vh;
   display: flex;
@@ -78,7 +70,9 @@ const AboutSection = styled.section`
   text-align: center;
   justify-content: center;
   align-items: center;
-  animation: ${fadeIn} 1.5s ease-in-out forwards;
+  opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
+  transform: ${({ $isVisible }) => ($isVisible ? 'translateY(0)' : 'translateY(20px)')};
+  transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
 `;
 
 const ContentContainer = styled.div`
@@ -98,7 +92,9 @@ const ImageContainer = styled.div`
   overflow: hidden;
   border-radius: 50%;
   border: 3px solid #64ffda;
-  animation: ${slideIn} 2s ease-out forwards;
+  opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
+  transform: ${({ $isVisible }) => ($isVisible ? 'translateX(0)' : 'translateX(-100px)')};
+  transition: opacity 2s ease-in-out, transform 2s ease-in-out;
 `;
 
 const ProfileImage = styled.img`
@@ -117,16 +113,20 @@ const Title = styled.h2`
   font-size: 2rem;
   color: #64ffda;
   margin-bottom: 1rem;
-  opacity: 0;
-  animation: ${fadeIn} 1s ease-in-out 0.5s forwards;
+  opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
+  transform: ${({ $isVisible }) => ($isVisible ? 'translateY(0)' : 'translateY(20px)')};
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  transition-delay: 0.5s;
 `;
 
 const Description = styled.p`
   font-size: 1.25rem;
   color: #ccd6f6;
   line-height: 1.6;
-  opacity: 0;
-  animation: ${fadeIn} 1s ease-in-out 1s forwards;
+  opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
+  transform: ${({ $isVisible }) => ($isVisible ? 'translateY(0)' : 'translateY(20px)')};
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  transition-delay: 1s;
 `;
 
 const SkillsContainer = styled.div`
@@ -135,8 +135,10 @@ const SkillsContainer = styled.div`
   justify-content: center;
   gap: 1.5rem;
   margin-top: 2rem;
-  opacity: 0;
-  animation: ${fadeIn} 1s ease-in-out 1.5s forwards;
+  opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
+  transform: ${({ $isVisible }) => ($isVisible ? 'translateY(0)' : 'translateY(20px)')};
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  transition-delay: 1.5s;
 `;
 
 const Skill = styled.div.attrs(props => ({
