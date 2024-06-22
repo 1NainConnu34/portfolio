@@ -1,7 +1,7 @@
 // src/components/Experience.js
 
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
 const experiences = [
@@ -32,7 +32,7 @@ const Experience = () => {
     <ExperienceSection id="experience" ref={elementRef} $isVisible={isVisible}>
       <Title $isVisible={isVisible}>Expériences</Title>
       <TimelineContainer>
-        <Line />
+        <Line $isVisible={isVisible} />
         {experiences.map((exp, index) => (
           <TimelineItem key={index} $isVisible={isVisible}>
             <Point />
@@ -40,7 +40,7 @@ const Experience = () => {
               <Date>{exp.date}</Date>
               <Title $isVisible={isVisible}>{exp.title}</Title>
               <Company>{exp.company}</Company>
-              <Description>{exp.description}</Description>
+              <Description $isVisible={isVisible}>{exp.description}</Description>
             </Content>
           </TimelineItem>
         ))}
@@ -50,16 +50,6 @@ const Experience = () => {
 };
 
 export default Experience;
-
-const fadeIn = keyframes`
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-`;
-
-const slideInLine = keyframes`
-  0% { height: 0; }
-  100% { height: 100%; }
-`;
 
 const ExperienceSection = styled.section`
   background-color: #0a192f;
@@ -98,9 +88,9 @@ const Line = styled.div`
   left: 10px;
   top: 0;
   width: 2px;
-  height: 100%;
+  height: ${({ $isVisible }) => ($isVisible ? "100%" : "0%")};
   background-color: #64ffda;
-  animation: ${slideInLine} 2s ease-in-out;
+  transition: height 2s ease-in-out;
 `;
 
 const TimelineItem = styled.div`
@@ -135,5 +125,8 @@ const Description = styled.p`
   font-size: 1.1rem;
   color: #ccd6f6;
   margin-top: 0.5rem;
-  animation: ${fadeIn} 1s ease-in-out;
+  opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
+  transform: ${({ $isVisible }) => ($isVisible ? 'translateX(0)' : 'translateX(20px)')};
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  transition-delay: 0.5s;
 `;
