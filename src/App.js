@@ -29,7 +29,7 @@ function App() {
             <Home />
             <About />
             <Experience />
-            {/* <Projects /> */}
+            <Projects />
           </main>
           {/* <Footer /> */}
           <SocialMedia />
