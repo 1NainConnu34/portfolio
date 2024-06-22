@@ -1,7 +1,7 @@
 // src/components/About.js
 
 import React, { useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode, faLaptopCode, faDatabase, faC, faMobile } from '@fortawesome/free-solid-svg-icons';
 import profilePic from '../assets/moi.jpg';
@@ -32,7 +32,7 @@ const About = () => {
         <TextContainer>
           <Title $isVisible={isVisible}>À propos de moi</Title>
           <Description $isVisible={isVisible}>
-            Bonjour ! Je m'appelle Alexandre Bret et je suis un développeur passionné par la création de sites et d'applications innovants. 
+            Bonjour ! Je m'appelle Alexandre Bret et je suis un étudiant et développeur passionné par la création de sites et d'applications innovantes. 
             Avec une expertise dans les technologies modernes et une passion pour le design propre, je m'efforce de créer des expériences utilisateur uniques et engageantes.
           </Description>
           <SkillsContainer $isVisible={isVisible}>
@@ -116,7 +116,7 @@ const Title = styled.h2`
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
   transform: ${({ $isVisible }) => ($isVisible ? 'translateY(0)' : 'translateY(20px)')};
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-  transition-delay: 0.5s;
+  transition-delay: 0.33s;
 `;
 
 const Description = styled.p`
@@ -126,7 +126,7 @@ const Description = styled.p`
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
   transform: ${({ $isVisible }) => ($isVisible ? 'translateY(0)' : 'translateY(20px)')};
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-  transition-delay: 1s;
+  transition-delay: 0.66s;
 `;
 
 const SkillsContainer = styled.div`
@@ -138,7 +138,7 @@ const SkillsContainer = styled.div`
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
   transform: ${({ $isVisible }) => ($isVisible ? 'translateY(0)' : 'translateY(20px)')};
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-  transition-delay: 1.5s;
+  transition-delay: 1s;
 `;
 
 const Skill = styled.div.attrs(props => ({
