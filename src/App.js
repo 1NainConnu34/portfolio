@@ -31,7 +31,7 @@ function App() {
             <Experience />
             <Projects />
           </main>
-          {/* <Footer /> */}
+          <Footer />
           <SocialMedia />
         </>
       )}
