@@ -61,7 +61,7 @@ const ExperienceSection = styled.section`
 const Title = styled.h2`
   font-size: 2.5rem;
   color: #64ffda;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
   transform: ${({ $isVisible }) => ($isVisible ? 'translateY(0)' : 'translateY(20px)')};
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
