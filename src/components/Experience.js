@@ -56,6 +56,11 @@ const ExperienceSection = styled.section`
   color: #ccd6f6;
   padding: 4rem 1rem;
   text-align: center;
+
+  @media (max-width: 768px) {
+    padding-right: 3rem;
+    padding-left: 3rem;
+  }
 `;
 
 const Title = styled.h2`

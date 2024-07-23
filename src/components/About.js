@@ -73,6 +73,10 @@ const AboutSection = styled.section`
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
   transform: ${({ $isVisible }) => ($isVisible ? 'translateY(0)' : 'translateY(20px)')};
   transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+
+  @media (max-width: 480px) {
+    padding-bottom: 5rem;
+  }
 `;
 
 const ContentContainer = styled.div`
@@ -80,7 +84,7 @@ const ContentContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     flex-direction: row;
     justify-content: center;
   }
@@ -117,6 +121,7 @@ const Title = styled.h2`
   transform: ${({ $isVisible }) => ($isVisible ? 'translateY(0)' : 'translateY(20px)')};
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
   transition-delay: 0.33s;
+  padding: 0 4rem;
 `;
 
 const Description = styled.p`
@@ -127,6 +132,8 @@ const Description = styled.p`
   transform: ${({ $isVisible }) => ($isVisible ? 'translateY(0)' : 'translateY(20px)')};
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
   transition-delay: 0.66s;
+  text-align: justify;
+  padding: 0 4rem;
 `;
 
 const SkillsContainer = styled.div`
@@ -139,6 +146,7 @@ const SkillsContainer = styled.div`
   transform: ${({ $isVisible }) => ($isVisible ? 'translateY(0)' : 'translateY(20px)')};
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
   transition-delay: 1s;
+  padding: 0 1.5rem;
 `;
 
 const Skill = styled.div.attrs(props => ({
@@ -161,10 +169,30 @@ const Skill = styled.div.attrs(props => ({
   &:hover {
     cursor: default;
   }
+
+  @media (max-width: 768px) {
+    width: 80px;
+    height: 80px;
+  }
+
+  @media (max-width: 480px) {
+    width: 60px;
+    height: 60px;
+  }
 `;
 
 const SkillTitle = styled.h3`
   font-size: 1rem;
   margin-top: 0.5rem;
   color: #64ffda;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.6rem;
+    margin-top: 0.3rem;
+  }
 `;

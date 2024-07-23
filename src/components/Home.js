@@ -72,6 +72,8 @@ const IntroText = styled.div`
   margin-bottom: 10rem;
   opacity: 0;
   animation: ${fadeIn} 1.5s ease-in-out 0.5s forwards;
+  margin-left: 5rem;
+  margin-right: 5rem;
 `;
 
 const SmallText = styled.p`
@@ -83,12 +85,20 @@ const SmallText = styled.p`
 const LargeText = styled.h1`
   font-size: 5rem;
   margin: 0.5rem 0;
+
+  @media (max-width: 768px) {
+    font-size: 4rem
+  }
 `;
 
 const SubText = styled.p`
   font-size: 3rem;
   color: #8892b0;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem
+  }
 `;
 
 const Arrows = styled.div`
