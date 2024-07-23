@@ -88,7 +88,7 @@ const ProjectCard = styled.div`
   padding: 2rem;
   text-align: left;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   width: calc(100% / 3 - 2rem);
   ${({ $isVisible }) =>
     $isVisible
@@ -106,6 +106,7 @@ const ProjectCard = styled.div`
   &:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    background-color: #0d2538;
   }
 `;
 
@@ -113,6 +114,11 @@ const ProjectTitle = styled.h3`
   font-size: 1.8rem;
   color: #64ffda;
   margin-bottom: 1rem;
+  transition: color 0.3s ease;
+
+  ${ProjectCard}:hover & {
+    color: #52d4bb;
+  }
 `;
 
 const ProjectDescription = styled.p`
