@@ -40,22 +40,32 @@ const fadeIn = keyframes`
 const SocialContainer = styled.div`
   position: fixed;
   bottom: 0;
-  padding-left: 2rem;
+  left: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: #ccd6f6;
   opacity: 0;
   animation: ${fadeIn} 1s ease-in-out 0.75s forwards;
+
+  @media (max-width: 768px) {
+    left: 20px;
+  }
+
+  & > a {
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  & > a:hover {
+    transform: scale(1.2);
+    color: #64ffda;
+  }
 `;
 
 const IconLink = styled.a`
   color: #ccd6f6;
   margin: 0.5rem 0;
   font-size: 1.5rem;
-  &:hover {
-    color: #64ffda;
-  }
 `;
 
 const Line = styled.div`
@@ -75,6 +85,10 @@ const EmailContainer = styled.div`
   color: #ccd6f6;
   opacity: 0;
   animation: ${fadeIn} 1s ease-in-out 1s forwards;
+
+  @media (max-width: 768px) {
+    right: 20px;
+  }
 `;
 
 const EmailLink = styled.a`
