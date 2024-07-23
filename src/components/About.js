@@ -77,6 +77,10 @@ const AboutSection = styled.section`
   @media (max-width: 480px) {
     padding-bottom: 5rem;
   }
+  
+  @media (max-height: 800px) {
+    height: 100%;
+  }
 `;
 
 const ContentContainer = styled.div`
