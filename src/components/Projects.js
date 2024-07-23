@@ -143,16 +143,17 @@ const TechBadge = styled.span`
   display: inline-block;
 `;
 
-const ProjectLink = styled.a`
-  display: inline-block;
+const ProjectLink = styled.button`
   background-color: #64ffda;
-  color: #0a192f;
+  border: none;
   border-radius: 5px;
+  color: #0a192f;
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+
   &:hover {
-    background-color: #52d4bb;
+    box-shadow: 0 0 10px #64ffda, 0 0 20px #64ffda, 0 0 30px #64ffda;
   }
 `;
