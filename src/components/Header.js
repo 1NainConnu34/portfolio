@@ -7,6 +7,7 @@ import { scrollToSection } from '../utils/scrollToSection';
 const Header = () => {
   const [scrollDirection, setScrollDirection] = useState("up");
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleScroll = () => {
     if (window.scrollY > lastScrollY) {
@@ -26,6 +27,12 @@ const Header = () => {
     };
   }, [lastScrollY]);
 
+  const handleClick = (event, id) => {
+    event.preventDefault();
+    scrollToSection(id);
+    setIsMenuOpen(false);
+  };
+
   return (
     <Nav $scrollDirection={scrollDirection}>
       <Logo href="#home" onClick={(e) => handleClick(e, 'home')}>
@@ -36,7 +43,12 @@ const Header = () => {
           <Letters>AB</Letters>
         </Circle>
       </Logo>
-      <Menu>
+      <BurgerMenu onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <span />
+        <span />
+        <span />
+      </BurgerMenu>
+      <Menu $isMenuOpen={isMenuOpen}>
         <MenuItem><a href="#home" onClick={(e) => handleClick(e, 'home')}>Accueil</a></MenuItem>
         <MenuItem><a href="#about" onClick={(e) => handleClick(e, 'about')}>À propos</a></MenuItem>
         <MenuItem><a href="#experience" onClick={(e) => handleClick(e, 'experience')}>Expérience</a></MenuItem>
@@ -44,11 +56,6 @@ const Header = () => {
       </Menu>
     </Nav>
   );
-};
-
-const handleClick = (event, id) => {
-  event.preventDefault();
-  scrollToSection(id);
 };
 
 export default Header;
@@ -62,8 +69,8 @@ const Nav = styled.nav.attrs(props => ({
   style: {
     top: props.$scrollDirection === 'up' ? '0' : '-80px',
   },
-}))
-  `display: flex;
+}))`
+  display: flex;
   position: fixed;
   width: 100%;
   justify-content: space-between;
@@ -121,12 +128,46 @@ const Letters = styled.div`
   z-index: 10;
 `;
 
+const BurgerMenu = styled.div`
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  position: fixed;
+  right: 1.5rem;
+
+  span {
+    height: 3px;
+    width: 25px;
+    background: #64ffda;
+    margin-bottom: 4px;
+    border-radius: 5px;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+`;
+
 const Menu = styled.ul`
   display: flex;
   list-style: none;
   opacity: 0;
   padding-right: 4rem;
   animation: ${fadeIn} 1s ease-in-out 0.25s forwards;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    right: ${({ $isMenuOpen }) => ($isMenuOpen ? '0' : '-100%')};
+    background-color: #0a192f;
+    width: 200px;
+    padding: 0rem 2rem;
+    box-shadow: 0px 10px 30px -15px rgba(2, 12, 27, 0.7);
+    transition: right 0.3s ease-in-out;
+    opacity: 1;
+    margin-top: 0;
+  }
 `;
 
 const MenuItem = styled.li`
@@ -137,5 +178,9 @@ const MenuItem = styled.li`
     &:hover {
       color: #64ffda;
     }
+  }
+
+  @media (max-width: 768px) {
+    margin: 1rem 0;
   }
 `;
