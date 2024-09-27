@@ -23,10 +23,20 @@ const projects = [
     technologies: ['C', 'CSFML'],
     link: 'https://github.com/1NainConnu34/Phoenix-Hunter',
   },
+  {
+    title: 'Deadlockdle',
+    description: 'Développement d\'un site web avec des mini jeux dans l\'univers du jeu Deadlock.',
+    technologies: ['React', 'Next', 'Tailwind', 'TypeScript', 'Express', 'MongoDB'],
+    link: 'https://deadlockdle.net',
+  },
 ];
 
 const Projects = () => {
   const [elementRef, isVisible] = useIntersectionObserver({ threshold: 0.1 });
+
+  const handleClick = (link) => {
+    window.open(link, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <ProjectsSection id="projects" ref={elementRef} $isVisible={isVisible}>
@@ -41,7 +51,7 @@ const Projects = () => {
                 <TechBadge key={i}>{tech}</TechBadge>
               ))}
             </Technologies>
-            <ProjectLink href={project.link} target="_blank" rel="noopener noreferrer">
+            <ProjectLink onClick={() => handleClick(project.link)}>
               Voir le projet
             </ProjectLink>
           </ProjectCard>
