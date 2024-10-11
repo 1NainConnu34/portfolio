@@ -12,16 +12,16 @@ const projects = [
     link: 'https://github.com/1NainConnu34/portfolio',
   },
   {
-    title: 'Bot Discord',
-    description: 'Développement d\'un bot Discord pour découvrir les commandes et interagir avec les utilisateurs. Une dizaine de commandes sont disponibles.',
-    technologies: ['Node.js', 'Discord.js'],
-    link: 'https://github.com/1NainConnu34/Discord-Bot',
-  },
-  {
     title: 'Phoenix Hunter',
     description: 'Création de mon premier jeu en C du même style que Duck Hunt.',
     technologies: ['C', 'CSFML'],
     link: 'https://github.com/1NainConnu34/Phoenix-Hunter',
+  },
+  {
+    title: 'My RPG',
+    description: 'Développement d\'un RPG en C.',
+    technologies: ['C', 'CSFML'],
+    link: 'https://github.com/1NainConnu34/my_rpg',
   },
   {
     title: 'Deadlockdle',
