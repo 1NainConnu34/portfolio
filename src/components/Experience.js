@@ -6,10 +6,10 @@ import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
 const experiences = [
   {
-    date: 'Septembre 2024 - Février 2025 (3 mois min, 6 mois max)',
-    title: 'Recherche d\'un stage à temps partiel',
+    date: '31 Mars 2025 - 31 Juillet 2025',
+    title: 'Recherche d\'un stage',
     company: '???',
-    description: 'Dans le cadre de mes études, je suis à la recherce d\'un stage à temps partiel pour une durée de 3 à 6 mois.',
+    description: 'Dans le cadre de mes études, je suis à la recherce d\'un stage pour une durée de 4 mois.',
   },
   {
     date: 'Octobre 2023 - Novembre 2023',
