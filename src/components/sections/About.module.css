@@ -1,0 +1,109 @@
+.grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+/* Photo */
+.photoCol {
+  flex-shrink: 0;
+}
+
+.photoFrame {
+  width: 200px;
+  position: relative;
+}
+
+.photoFrame::before {
+  content: '';
+  position: absolute;
+  inset: 8px -8px -8px 8px;
+  border: 1px solid var(--color-accent-cyan-border);
+  z-index: 0;
+}
+
+.photo {
+  width: 200px;
+  height: 240px;
+  object-fit: cover;
+  object-position: top;
+  position: relative;
+  z-index: 1;
+  border: 1px solid var(--color-border-bright);
+  filter: grayscale(25%);
+  transition: filter var(--transition-slow);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+.photoFrame:hover .photo {
+  filter: grayscale(0%);
+}
+
+/* Code block */
+.codeCol {
+  overflow-x: auto;
+}
+
+.code {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  padding: var(--space-lg);
+  border-radius: 2px;
+}
+
+.codeLine {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  line-height: 1.9;
+  min-height: 1.9em;
+  white-space: nowrap;
+}
+
+.lineNum {
+  color: var(--color-text-dim);
+  font-size: var(--font-size-xs);
+  user-select: none;
+  min-width: 1.5rem;
+  text-align: right;
+}
+
+/* Syntaxe */
+.keyword  { color: var(--color-accent-magenta); }
+.varName  { color: var(--color-text-primary); }
+.operator { color: var(--color-text-secondary); }
+.brace    { color: var(--color-text-secondary); }
+.prop     { color: var(--color-text-primary); }
+.colon    { color: var(--color-text-secondary); }
+.string   { color: var(--color-accent-cyan); }
+.comma    { color: var(--color-text-secondary); }
+.bool     { color: #00ff88; }
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photoCol {
+    display: flex;
+    justify-content: center;
+  }
+
+  .photoFrame {
+    width: 160px;
+  }
+
+  .photo {
+    width: 160px;
+    height: 192px;
+  }
+}
+
+@media (max-width: 600px) {
+  .codeLine {
+    font-size: var(--font-size-xs);
+  }
+}

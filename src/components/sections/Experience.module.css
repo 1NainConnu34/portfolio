@@ -1,0 +1,105 @@
+.timeline {
+  position: relative;
+  padding-left: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Ligne verticale */
+.line {
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-accent-cyan-border),
+    var(--color-border) 80%,
+    transparent
+  );
+  box-shadow: 0 0 6px rgba(0, 255, 213, 0.15);
+}
+
+/* Entrée */
+.entry {
+  position: relative;
+  padding: 0 0 var(--space-2xl) 0;
+  display: grid;
+  grid-template-columns: 0 1fr;
+  gap: 0 var(--space-lg);
+}
+
+.entry:last-child {
+  padding-bottom: 0;
+}
+
+/* Nœud losange */
+.node {
+  position: absolute;
+  left: -40px;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diamond {
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent-cyan);
+  transform: rotate(45deg);
+  box-shadow: var(--glow-cyan-sm);
+  transition: box-shadow var(--transition-base);
+}
+
+.entry:hover .diamond {
+  box-shadow: var(--glow-cyan);
+}
+
+/* Contenu */
+.content {
+  padding-left: var(--space-sm);
+  border-left: 1px solid transparent;
+  transition: border-color var(--transition-base), padding-left var(--transition-base);
+}
+
+.entry:hover .content {
+  border-left-color: var(--color-accent-cyan-border);
+  padding-left: var(--space-md);
+}
+
+.date {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-dim);
+  letter-spacing: 0.06em;
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.role {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.company {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-accent-cyan);
+  margin-bottom: var(--space-sm);
+  letter-spacing: 0.04em;
+}
+
+.description {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}

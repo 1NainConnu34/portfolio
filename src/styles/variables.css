@@ -1,0 +1,71 @@
+:root {
+  /* === Couleurs background === */
+  --color-bg-primary: #0a0a0f;
+  --color-bg-secondary: #0d0d14;
+  --color-bg-elevated: #12121c;
+  --color-bg-hover: #1a1a2e;
+
+  /* === Couleurs texte === */
+  --color-text-primary: #e0e0e8;
+  --color-text-secondary: #8888a0;
+  --color-text-dim: #4a4a60;
+
+  /* === Accents === */
+  --color-accent-cyan: #00ffd5;
+  --color-accent-cyan-dim: rgba(0, 255, 213, 0.12);
+  --color-accent-cyan-border: rgba(0, 255, 213, 0.3);
+  --color-accent-magenta: #ff00aa;
+  --color-accent-magenta-dim: rgba(255, 0, 170, 0.1);
+  --color-accent-green: #00ff88;
+
+  /* === Bordures === */
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-bright: rgba(255, 255, 255, 0.12);
+
+  /* === Typography === */
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+  --font-glitch: 'Rubik Glitch', cursive;
+
+  --font-size-xs: 0.6875rem;
+  --font-size-sm: 0.75rem;
+  --font-size-base: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.375rem;
+  --font-size-2xl: 1.75rem;
+  --font-size-3xl: 2.5rem;
+  --font-size-hero: clamp(2.8rem, 9vw, 5.5rem);
+
+  /* === Spacing === */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 5rem;
+  --space-section: 7rem;
+
+  /* === Layout === */
+  --max-width: 1100px;
+  --nav-height: 60px;
+
+  /* === Effets glow === */
+  --glow-cyan-sm: 0 0 8px rgba(0, 255, 213, 0.4), 0 0 20px rgba(0, 255, 213, 0.15);
+  --glow-cyan: 0 0 12px rgba(0, 255, 213, 0.5), 0 0 35px rgba(0, 255, 213, 0.2);
+  --glow-cyan-strong: 0 0 12px rgba(0, 255, 213, 0.7), 0 0 50px rgba(0, 255, 213, 0.3);
+  --glow-magenta: 0 0 12px rgba(255, 0, 170, 0.5), 0 0 35px rgba(255, 0, 170, 0.2);
+  --glow-text-cyan: 0 0 10px rgba(0, 255, 213, 0.6);
+
+  /* === Transitions === */
+  --transition-fast: 120ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 450ms ease;
+
+  /* === Z-index === */
+  --z-cursor: 9999;
+  --z-loading: 1000;
+  --z-nav: 100;
+  --z-overlay: 50;
+  --z-grid: 1;
+}

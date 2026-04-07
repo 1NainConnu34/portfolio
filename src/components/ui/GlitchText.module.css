@@ -1,0 +1,54 @@
+.glitch {
+  position: relative;
+  font-family: var(--font-glitch);
+  color: var(--color-text-primary);
+  display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  white-space: inherit;
+  pointer-events: none;
+}
+
+.glitch::before {
+  color: var(--color-accent-cyan);
+  animation: none;
+}
+
+.glitch::after {
+  color: var(--color-accent-magenta);
+  animation: none;
+}
+
+/* Glitch on hover uniquement */
+.onHover:hover::before {
+  animation: glitch-clip-1 0.3s steps(1) both;
+}
+
+.onHover:hover::after {
+  animation: glitch-clip-2 0.3s steps(1) both;
+}
+
+/* Glitch périodique */
+.periodic::before {
+  animation: glitch-clip-1 0.3s steps(1) 4s infinite;
+}
+
+.periodic::after {
+  animation: glitch-clip-2 0.3s steps(1) 4s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glitch::before,
+  .glitch::after {
+    display: none;
+  }
+}

@@ -1,0 +1,26 @@
+.section {
+  padding: var(--space-section) var(--space-xl);
+  position: relative;
+}
+
+.fullHeight {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.fullHeight .inner {
+  width: 100%;
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--space-3xl) var(--space-lg);
+  }
+}

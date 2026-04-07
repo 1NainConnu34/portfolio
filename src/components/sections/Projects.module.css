@@ -1,0 +1,132 @@
+/* Desktop */
+.desktop {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 0;
+  border: 1px solid var(--color-border);
+}
+
+.mobile {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* Liste gauche */
+.list {
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+}
+
+.listItem {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-align: left;
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  transition: color var(--transition-base), background var(--transition-base);
+  background: none;
+  border-right: none;
+  border-left: 2px solid transparent;
+}
+
+.listItem:last-child {
+  border-bottom: none;
+}
+
+.listItem:hover {
+  color: var(--color-text-primary);
+  background: var(--color-bg-elevated);
+}
+
+.listItem.active {
+  color: var(--color-accent-cyan);
+  border-left-color: var(--color-accent-cyan);
+  background: var(--color-bg-elevated);
+}
+
+.arrow {
+  color: var(--color-accent-cyan);
+  font-size: 0.7rem;
+  width: 12px;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+}
+
+/* Panneau détail */
+.panel {
+  padding: var(--space-2xl);
+  min-height: 320px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.detail {
+  width: 100%;
+}
+
+.detailHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+}
+
+.detailTitle {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.detailLinks {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.detailIconLink {
+  color: var(--color-text-secondary);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  display: flex;
+}
+
+.detailIconLink:hover {
+  color: var(--color-accent-cyan);
+  transform: translateY(-2px);
+}
+
+.detailDesc {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin-bottom: var(--space-xl);
+  max-width: 560px;
+}
+
+.detailTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.detailCta {
+  display: flex;
+  gap: var(--space-md);
+}
+
+@media (max-width: 768px) {
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: flex;
+  }
+}

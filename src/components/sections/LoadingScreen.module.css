@@ -1,0 +1,122 @@
+.screen {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-loading);
+  padding: var(--space-xl);
+}
+
+/* Scanline */
+.scanline {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 213, 0.015) 2px,
+    rgba(0, 255, 213, 0.015) 4px
+  );
+  pointer-events: none;
+}
+
+/* Terminal window */
+.terminal {
+  width: 100%;
+  max-width: 560px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-bright);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--color-bg-hover);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.title {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-dim);
+  margin-left: var(--space-sm);
+  letter-spacing: 0.05em;
+}
+
+.body {
+  padding: var(--space-lg);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.line {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+}
+
+.linePrompt {
+  color: var(--color-text-secondary);
+}
+
+.lineOk {
+  color: var(--color-text-secondary);
+}
+
+.lineOk::after {
+  /* Highlight [OK] */
+}
+
+.line:has(.lineOk) {
+  /* fallback handled in JS via class */
+}
+
+.lineText {
+  color: var(--color-text-secondary);
+}
+
+.cursor {
+  display: inline-block;
+  color: var(--color-accent-cyan);
+  animation: blink 1s step-end infinite;
+  font-size: var(--font-size-sm);
+}
+
+/* Barre de progression */
+.progressBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-border);
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--color-accent-cyan);
+  box-shadow: var(--glow-cyan-sm);
+  width: 0%;
+}
+
+/* Coloration des [OK] */
+.line .lineOk {
+  color: var(--color-text-secondary);
+}
