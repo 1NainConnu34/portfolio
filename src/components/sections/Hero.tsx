@@ -1,9 +1,7 @@
 import { motion } from 'framer-motion';
-import { GlitchText } from '@/components/ui/GlitchText';
 import { GlowButton } from '@/components/ui/GlowButton';
 import { Icon } from '@/components/ui/Icon';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
-import profileImg from '@/assets/moi.jpg';
 import styles from './Hero.module.css';
 
 function scrollToProjects() {
@@ -35,14 +33,9 @@ export function Hero() {
             <span className={styles.prompt} aria-hidden="true">&gt;</span> Bonjour, je suis
           </motion.p>
 
-          <motion.div variants={item}>
-            <GlitchText
-              text="Alexandre Bret"
-              as="h1"
-              className={styles.name}
-              periodic
-            />
-          </motion.div>
+          <motion.h1 className={styles.name} variants={item}>
+            Alexandre Bret
+          </motion.h1>
 
           <motion.p className={styles.role} variants={item}>
             Développeur Web &amp; Software
@@ -66,24 +59,6 @@ export function Hero() {
               GitHub
             </GlowButton>
           </motion.div>
-        </motion.div>
-
-        {/* Photo profil */}
-        <motion.div
-          className={styles.photoWrapper}
-          initial={reduced ? {} : { opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <div className={styles.photoFrame}>
-            <img
-              src={profileImg}
-              alt="Alexandre Bret"
-              className={styles.photo}
-              loading="eager"
-            />
-            <div className={styles.photoGlow} aria-hidden="true" />
-          </div>
         </motion.div>
       </div>
 

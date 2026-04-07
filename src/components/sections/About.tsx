@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { Section } from '@/components/layout/Section';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
-import profileImg from '@/assets/moi.jpg';
 import styles from './About.module.css';
 
 interface CodeLine {
@@ -140,21 +139,7 @@ export function About() {
   return (
     <Section id="about" aria-labelledby="about-heading">
       <SectionHeading label="About" sectionNumber="01" id="about-heading" />
-      <div className={styles.grid}>
-        <div className={styles.photoCol}>
-          <div className={styles.photoFrame}>
-            <img
-              src={profileImg}
-              alt="Alexandre Bret"
-              className={styles.photo}
-              loading="lazy"
-            />
-          </div>
-        </div>
-        <div className={styles.codeCol}>
-          <CodeBlock lines={codeLines} />
-        </div>
-      </div>
+      <CodeBlock lines={codeLines} />
     </Section>
   );
 }
