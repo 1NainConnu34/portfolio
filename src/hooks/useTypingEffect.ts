@@ -32,7 +32,7 @@ export function useTypingEffect(lines: string[], speed = 30): TypingResult {
         currentLine++;
         currentChar = 0;
         // Petite pause entre les lignes
-        timeoutRef.current = setTimeout(tick, speed * 4);
+        timeoutRef.current = setTimeout(tick, speed * 3);
       }
     };
 

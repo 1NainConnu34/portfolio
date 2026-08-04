@@ -20,12 +20,12 @@ export function LoadingScreen() {
   const reduced = useReducedMotion();
   const { displayedLines, isComplete } = useTypingEffect(
     BOOT_LINES,
-    reduced ? 0 : 8
+    reduced ? 0 : 4
   );
 
   useEffect(() => {
     if (isComplete || reduced) {
-      const timer = setTimeout(() => setLoading(false), reduced ? 800 : 500);
+      const timer = setTimeout(() => setLoading(false), reduced ? 300 : 200);
       return () => clearTimeout(timer);
     }
   }, [isComplete, reduced, setLoading]);
@@ -38,7 +38,7 @@ export function LoadingScreen() {
     <motion.div
       className={styles.screen}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.3 }}
     >
       {/* Scanline overlay */}
       <div className={styles.scanline} aria-hidden="true" />
@@ -81,7 +81,7 @@ export function LoadingScreen() {
         <motion.div
           className={styles.progressFill}
           animate={{ width: `${progress}%` }}
-          transition={{ duration: 0.3, ease: 'easeOut' }}
+          transition={{ duration: 0.15, ease: 'easeOut' }}
         />
       </div>
     </motion.div>
