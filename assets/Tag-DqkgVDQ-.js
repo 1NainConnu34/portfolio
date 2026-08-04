@@ -1,0 +1,1 @@
+import{j as s}from"./index-D-GAPQai.js";const c="_tag_x3y9k_1",i="_cyan_x3y9k_12",m="_dim_x3y9k_22",a={tag:c,cyan:i,dim:m};function y({label:n,variant:t="cyan"}){return s.jsx("span",{className:`${a.tag} ${t==="dim"?a.dim:a.cyan}`,children:n})}export{y as T};
