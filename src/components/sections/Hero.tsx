@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { GlowButton } from '@/components/ui/GlowButton';
 import { Icon } from '@/components/ui/Icon';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { useI18n } from '@/i18n';
 import styles from './Hero.module.css';
 
 function scrollToProjects() {
@@ -10,6 +11,7 @@ function scrollToProjects() {
 
 export function Hero() {
   const reduced = useReducedMotion();
+  const { t } = useI18n();
 
   const container = {
     hidden: {},
@@ -21,7 +23,7 @@ export function Hero() {
     : { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } };
 
   return (
-    <section id="hero" className={styles.hero} aria-label="Introduction">
+    <section id="hero" className={styles.hero} aria-label={t.hero.ariaLabel}>
       <div className={styles.inner}>
         <motion.div
           className={styles.content}
@@ -30,7 +32,7 @@ export function Hero() {
           animate="visible"
         >
           <motion.p className={styles.greeting} variants={item}>
-            <span className={styles.prompt} aria-hidden="true">&gt;</span> Bonjour, je suis
+            <span className={styles.prompt} aria-hidden="true">&gt;</span> {t.hero.greeting}
           </motion.p>
 
           <motion.h1 className={styles.name} variants={item}>
@@ -38,16 +40,16 @@ export function Hero() {
           </motion.h1>
 
           <motion.p className={styles.role} variants={item}>
-            Développeur Web &amp; Software
+            {t.hero.role}
           </motion.p>
 
           <motion.p className={styles.bio} variants={item}>
-            Étudiant passionné par la création de sites et d&apos;applications innovantes.
+            {t.hero.bio}
           </motion.p>
 
           <motion.div className={styles.cta} variants={item}>
             <GlowButton onClick={scrollToProjects}>
-              Voir mes projets
+              {t.hero.ctaProjects}
             </GlowButton>
             <GlowButton
               href="https://github.com/1NainConnu34"

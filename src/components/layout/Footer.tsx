@@ -1,13 +1,16 @@
 import { Icon } from '@/components/ui/Icon';
+import { useI18n } from '@/i18n';
 import { socials } from '@/data/socials';
 import styles from './Footer.module.css';
 
 export function Footer() {
+  const { t, loc } = useI18n();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <p className={styles.credit}>
-          Designed &amp; built by{' '}
+          {t.footer.credit}{' '}
           <a
             href="https://github.com/1NainConnu34"
             target="_blank"
@@ -19,14 +22,14 @@ export function Footer() {
           </a>
         </p>
 
-        <nav className={styles.socials} aria-label="Liens sociaux">
+        <nav className={styles.socials} aria-label={t.footer.socialsLabel}>
           {socials.map((s) => (
             <a
               key={s.platform}
               href={s.url}
               target={s.icon !== 'mail' ? '_blank' : undefined}
               rel={s.icon !== 'mail' ? 'noopener noreferrer' : undefined}
-              aria-label={s.label}
+              aria-label={loc(s.label)}
               className={styles.socialLink}
               data-cursor="pointer"
             >

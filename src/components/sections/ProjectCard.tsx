@@ -1,5 +1,6 @@
 import { Icon } from '@/components/ui/Icon';
 import { Tag } from '@/components/ui/Tag';
+import { useI18n } from '@/i18n';
 import { ProjectMedia } from './ProjectMedia';
 import type { Project } from '@/types';
 import styles from './ProjectCard.module.css';
@@ -9,6 +10,8 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const { t, loc } = useI18n();
+
   return (
     <article className={styles.card}>
       {project.media && (
@@ -24,7 +27,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Code source de ${project.title} sur GitHub`}
+              aria-label={t.projects.sourceOf(project.title)}
               className={styles.iconLink}
               data-cursor="pointer"
             >
@@ -36,7 +39,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Voir ${project.title}`}
+              aria-label={t.projects.viewOf(project.title)}
               className={styles.iconLink}
               data-cursor="pointer"
             >
@@ -45,10 +48,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
           )}
         </div>
       </div>
-      <p className={styles.description}>{project.description}</p>
+      <p className={styles.description}>{loc(project.description)}</p>
       <div className={styles.tags}>
         {project.technologies.map((tech) => (
-          <Tag key={tech} label={tech} />
+          <Tag key={tech.en} label={loc(tech)} />
         ))}
       </div>
     </article>

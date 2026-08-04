@@ -2,16 +2,12 @@ import { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollDirection } from '@/hooks/useScrollDirection';
 import { useUIStore } from '@/store/uiStore';
+import { useI18n } from '@/i18n';
 import { Icon } from '@/components/ui/Icon';
+import { LanguageSwitch } from '@/components/ui/LanguageSwitch';
 import styles from './Navbar.module.css';
 
-const NAV_LINKS = [
-  { id: 'about', label: 'About' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'contact', label: 'Contact' },
-];
+const NAV_IDS = ['about', 'skills', 'experience', 'projects', 'contact'] as const;
 
 function scrollTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -23,7 +19,10 @@ export function Navbar() {
   const isMobileMenuOpen = useUIStore((s) => s.isMobileMenuOpen);
   const toggleMobileMenu = useUIStore((s) => s.toggleMobileMenu);
   const closeMobileMenu = useUIStore((s) => s.closeMobileMenu);
+  const { t } = useI18n();
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const navLinks = NAV_IDS.map((id) => ({ id, label: t.nav[id] }));
 
   // Fermer le menu au clic en dehors
   useEffect(() => {
@@ -57,15 +56,15 @@ export function Navbar() {
         <button
           className={styles.logo}
           onClick={() => scrollTo('hero')}
-          aria-label="Retour en haut"
+          aria-label={t.nav.backToTop}
           data-cursor="pointer"
         >
           <span className={styles.logoText}>AB</span>
         </button>
 
         {/* Liens desktop */}
-        <nav className={styles.links} aria-label="Navigation principale">
-          {NAV_LINKS.map((link) => (
+        <nav className={styles.links} aria-label={t.nav.mainNav}>
+          {navLinks.map((link) => (
             <button
               key={link.id}
               className={`${styles.link} ${activeSection === link.id ? styles.active : ''}`}
@@ -80,16 +79,21 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* Burger mobile */}
-        <button
-          className={styles.burger}
-          onClick={toggleMobileMenu}
-          aria-label={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-          aria-expanded={isMobileMenuOpen}
-          data-cursor="pointer"
-        >
-          <Icon name={isMobileMenuOpen ? 'close' : 'menu'} size={22} />
-        </button>
+        {/* Actions droite */}
+        <div className={styles.actions}>
+          <LanguageSwitch />
+
+          {/* Burger mobile */}
+          <button
+            className={styles.burger}
+            onClick={toggleMobileMenu}
+            aria-label={isMobileMenuOpen ? t.nav.closeMenu : t.nav.openMenu}
+            aria-expanded={isMobileMenuOpen}
+            data-cursor="pointer"
+          >
+            <Icon name={isMobileMenuOpen ? 'close' : 'menu'} size={22} />
+          </button>
+        </div>
       </div>
 
       {/* Menu mobile */}
@@ -104,10 +108,10 @@ export function Navbar() {
             transition={{ type: 'tween', duration: 0.25 }}
             role="dialog"
             aria-modal="true"
-            aria-label="Menu navigation"
+            aria-label={t.nav.menuLabel}
           >
             <nav>
-              {NAV_LINKS.map((link, i) => (
+              {navLinks.map((link, i) => (
                 <motion.button
                   key={link.id}
                   className={`${styles.mobileLink} ${activeSection === link.id ? styles.active : ''}`}

@@ -8,22 +8,24 @@ import { Icon } from '@/components/ui/Icon';
 import { ProjectCard } from './ProjectCard';
 import { ProjectMedia } from './ProjectMedia';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { useI18n } from '@/i18n';
 import { projects } from '@/data/projects';
 import styles from './Projects.module.css';
 
 export function Projects() {
   const [selected, setSelected] = useState(0);
   const reduced = useReducedMotion();
+  const { t, loc } = useI18n();
   const project = projects[selected];
 
   return (
     <Section id="projects" aria-labelledby="projects-heading">
-      <SectionHeading label="Projects" sectionNumber="04" id="projects-heading" />
+      <SectionHeading label={t.nav.projects} sectionNumber="04" id="projects-heading" />
 
       {/* Desktop : deux panneaux */}
       <div className={styles.desktop}>
         {/* Liste gauche */}
-        <nav className={styles.list} aria-label="Liste des projets">
+        <nav className={styles.list} aria-label={t.projects.listLabel}>
           {projects.map((p, i) => (
             <button
               key={p.id}
@@ -59,7 +61,7 @@ export function Projects() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={`Code source de ${project.title}`}
+                      aria-label={t.projects.sourceOf(project.title)}
                       className={styles.detailIconLink}
                       data-cursor="pointer"
                     >
@@ -75,11 +77,11 @@ export function Projects() {
                 </div>
               )}
 
-              <p className={styles.detailDesc}>{project.description}</p>
+              <p className={styles.detailDesc}>{loc(project.description)}</p>
 
               <div className={styles.detailTags}>
                 {project.technologies.map((tech) => (
-                  <Tag key={tech} label={tech} />
+                  <Tag key={tech.en} label={loc(tech)} />
                 ))}
               </div>
 
@@ -91,7 +93,7 @@ export function Projects() {
                     rel="noopener noreferrer"
                   >
                     <Icon name="external" size={14} />
-                    Voir le projet
+                    {t.projects.viewProject}
                   </GlowButton>
                 </div>
               )}

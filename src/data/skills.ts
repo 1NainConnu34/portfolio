@@ -1,36 +1,67 @@
 import type { SkillGroup } from '@/types';
+import { l } from '@/i18n';
 
 export const skills: SkillGroup[] = [
   {
-    category: 'Frontend',
-    items: ['React', 'TypeScript', 'JavaScript', 'Next.js', 'Tailwind CSS', 'HTML / CSS', 'Framer Motion'],
+    category: l('Frontend'),
+    items: [
+      l('React'),
+      l('TypeScript'),
+      l('JavaScript'),
+      l('Next.js'),
+      l('Tailwind CSS'),
+      l('HTML / CSS'),
+      l('Framer Motion'),
+    ],
   },
   {
-    category: 'Backend',
-    items: ['Node.js', 'Express'],
+    category: l('Backend'),
+    items: [l('Node.js'), l('Express')],
   },
   {
-    category: 'Databases',
-    items: ['MongoDB', 'SQL'],
+    category: l('Bases de données', 'Databases'),
+    items: [l('MongoDB'), l('SQL')],
   },
   {
-    category: 'Languages',
-    items: ['C', 'C++', 'Python', 'Assembleur'],
+    category: l('Langages', 'Languages'),
+    items: [l('C'), l('C++'), l('Python'), l('Assembleur', 'Assembly')],
   },
   {
-    category: 'Systems & Network',
-    items: ['Programmation réseau', 'Multithreading', 'IPC / Multi-processus', 'Unix / POSIX', 'Shell / Bash'],
+    category: l('Systèmes & Réseau', 'Systems & Network'),
+    items: [
+      l('Programmation réseau', 'Network programming'),
+      l('Multithreading'),
+      l('IPC / Multi-processus', 'IPC / Multi-processing'),
+      l('Unix / POSIX'),
+      l('Shell / Bash'),
+    ],
   },
   {
-    category: 'Graphics & Games',
-    items: ['SFML / CSFML', 'Moteur de jeu', 'Rendu 3D / Raytracing'],
+    category: l('Graphismes & Jeux', 'Graphics & Games'),
+    items: [
+      l('SFML / CSFML'),
+      l('Moteur de jeu', 'Game engine'),
+      l('Rendu 3D / Raytracing', '3D rendering / Raytracing'),
+    ],
   },
   {
-    category: 'Mobile',
-    items: ['React Native'],
+    category: l('Mobile'),
+    items: [l('React Native')],
   },
   {
-    category: 'Tools',
-    items: ['Git', 'GitHub', 'Linux', 'Docker', 'Vite', 'Makefile', 'CMake', 'WordPress', 'Figma', 'Trello', 'Jira'],
+    category: l('Outils', 'Tools'),
+    items: [
+      l('Git'),
+      l('GitHub'),
+      l('Linux'),
+      l('Docker'),
+      l('Vite'),
+      l('Makefile'),
+      l('CMake'),
+      l('WordPress'),
+      l('Figma'),
+      l('Trello'),
+      l('Jira'),
+    ],
   },
 ];

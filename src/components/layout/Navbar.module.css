@@ -97,6 +97,14 @@
   box-shadow: var(--glow-text-cyan);
 }
 
+/* Actions droite (langue + burger) */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  flex-shrink: 0;
+}
+
 /* Burger */
 .burger {
   display: none;

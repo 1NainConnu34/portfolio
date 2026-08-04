@@ -3,24 +3,26 @@ import { Section } from '@/components/layout/Section';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { GlowButton } from '@/components/ui/GlowButton';
 import { Icon } from '@/components/ui/Icon';
+import { useI18n } from '@/i18n';
 import { socials } from '@/data/socials';
 import styles from './Contact.module.css';
 
 const EMAIL = 'alexandrebret.84@gmail.com';
 
-const TERMINAL_LINES = [
-  { type: 'prompt', text: '$ whoami' },
-  { type: 'output', text: '  visiteur' },
-  { type: 'prompt', text: '$ cat contact.txt' },
-  { type: 'output', text: `  Email    : ${EMAIL}` },
-  { type: 'output', text: '  GitHub   : github.com/1NainConnu34' },
-  { type: 'output', text: '  LinkedIn : linkedin.com/in/alexandre-bret' },
-  { type: 'prompt', text: "$ echo \"Envoie-moi un message !\"" },
-  { type: 'output', text: '  Envoie-moi un message !' },
-];
-
 export function Contact() {
   const [copied, setCopied] = useState(false);
+  const { t } = useI18n();
+
+  const terminalLines = [
+    { type: 'prompt', text: '$ whoami' },
+    { type: 'output', text: `  ${t.contact.terminal.whoami}` },
+    { type: 'prompt', text: '$ cat contact.txt' },
+    { type: 'output', text: `  Email    : ${EMAIL}` },
+    { type: 'output', text: '  GitHub   : github.com/1NainConnu34' },
+    { type: 'output', text: '  LinkedIn : linkedin.com/in/alexandre-bret' },
+    { type: 'prompt', text: `$ echo "${t.contact.terminal.message}"` },
+    { type: 'output', text: `  ${t.contact.terminal.message}` },
+  ];
 
   const copyEmail = async () => {
     await navigator.clipboard.writeText(EMAIL);
@@ -30,7 +32,7 @@ export function Contact() {
 
   return (
     <Section id="contact" aria-labelledby="contact-heading">
-      <SectionHeading label="Contact" sectionNumber="05" id="contact-heading" />
+      <SectionHeading label={t.nav.contact} sectionNumber="05" id="contact-heading" />
 
       <div className={styles.grid}>
         {/* Terminal décoratif (aria-hidden) */}
@@ -42,7 +44,7 @@ export function Contact() {
             <span className={styles.termTitle}>contact.sh</span>
           </div>
           <div className={styles.termBody}>
-            {TERMINAL_LINES.map((line, i) => (
+            {terminalLines.map((line, i) => (
               <div key={i} className={styles.termLine}>
                 <span className={line.type === 'prompt' ? styles.termPrompt : styles.termOutput}>
                   {line.text}
@@ -55,9 +57,7 @@ export function Contact() {
 
         {/* Section accessible */}
         <div className={styles.accessible}>
-          <p className={styles.intro}>
-            Une question, une opportunité, une idée ? Je suis disponible et réponds rapidement.
-          </p>
+          <p className={styles.intro}>{t.contact.intro}</p>
 
           {/* Email */}
           <div className={styles.emailBlock}>
@@ -74,16 +74,16 @@ export function Contact() {
             <button
               className={styles.copyBtn}
               onClick={copyEmail}
-              aria-label={copied ? 'Email copié !' : 'Copier l\'email'}
+              aria-label={copied ? t.contact.copiedAria : t.contact.copyAria}
               data-cursor="pointer"
             >
               <Icon name={copied ? 'check' : 'copy'} size={15} />
-              <span>{copied ? 'Copié !' : 'Copier'}</span>
+              <span>{copied ? t.contact.copied : t.contact.copy}</span>
             </button>
           </div>
 
           {/* Liens sociaux */}
-          <nav className={styles.socialList} aria-label="Réseaux sociaux">
+          <nav className={styles.socialList} aria-label={t.contact.socialsLabel}>
             {socials
               .filter((s) => s.icon !== 'mail')
               .map((s) => (
@@ -105,7 +105,7 @@ export function Contact() {
           <div className={styles.cta}>
             <GlowButton href={`mailto:${EMAIL}`}>
               <Icon name="mail" size={15} />
-              M&apos;envoyer un email
+              {t.contact.emailCta}
             </GlowButton>
           </div>
         </div>

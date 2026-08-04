@@ -1,0 +1,42 @@
+.switch {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+}
+
+.slot {
+  display: flex;
+  align-items: center;
+}
+
+.bracket,
+.separator {
+  color: var(--color-text-dim);
+}
+
+.separator {
+  margin: 0 2px;
+}
+
+.option {
+  background: none;
+  border: none;
+  padding: 0 var(--space-xs);
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-base), text-shadow var(--transition-base);
+}
+
+.option:hover {
+  color: var(--color-text-primary);
+}
+
+.option.active {
+  color: var(--color-accent-cyan);
+  text-shadow: var(--glow-text-cyan);
+}

@@ -1,4 +1,5 @@
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { useI18n } from '@/i18n';
 import type { ProjectMedia as Media } from '@/types';
 import styles from './ProjectMedia.module.css';
 
@@ -11,13 +12,14 @@ interface ProjectMediaProps {
 
 export function ProjectMedia({ media, title, autoPlay = false }: ProjectMediaProps) {
   const reduced = useReducedMotion();
+  const { t } = useI18n();
 
   return (
     <div className={styles.frame}>
       {media.type === 'image' ? (
         <img
           src={media.src}
-          alt={`Aperçu de ${title}`}
+          alt={t.projects.previewOf(title)}
           className={styles.media}
           loading="lazy"
           decoding="async"
@@ -32,7 +34,7 @@ export function ProjectMedia({ media, title, autoPlay = false }: ProjectMediaPro
           controls
           autoPlay={autoPlay && !reduced}
           preload={autoPlay ? 'metadata' : 'none'}
-          aria-label={`Démo vidéo de ${title}`}
+          aria-label={t.projects.videoOf(title)}
         />
       )}
     </div>

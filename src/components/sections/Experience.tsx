@@ -2,15 +2,17 @@ import { motion } from 'framer-motion';
 import { Section } from '@/components/layout/Section';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { useI18n } from '@/i18n';
 import { experiences } from '@/data/experience';
 import styles from './Experience.module.css';
 
 export function Experience() {
   const reduced = useReducedMotion();
+  const { t, loc } = useI18n();
 
   return (
     <Section id="experience" aria-labelledby="experience-heading">
-      <SectionHeading label="Experience" sectionNumber="03" id="experience-heading" />
+      <SectionHeading label={t.nav.experience} sectionNumber="03" id="experience-heading" />
       <div className={styles.timeline}>
         {/* Ligne verticale */}
         <motion.div
@@ -38,12 +40,10 @@ export function Experience() {
             </div>
 
             <div className={styles.content}>
-              <time className={styles.date} dateTime={exp.date}>
-                {exp.date}
-              </time>
-              <h3 className={styles.role}>{exp.role}</h3>
-              <p className={styles.company}>{exp.company}</p>
-              <p className={styles.description}>{exp.description}</p>
+              <time className={styles.date}>{loc(exp.date)}</time>
+              <h3 className={styles.role}>{loc(exp.role)}</h3>
+              <p className={styles.company}>{loc(exp.company)}</p>
+              <p className={styles.description}>{loc(exp.description)}</p>
             </div>
           </motion.article>
         ))}

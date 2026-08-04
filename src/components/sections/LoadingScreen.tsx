@@ -3,23 +3,16 @@ import { motion } from 'framer-motion';
 import { useTypingEffect } from '@/hooks/useTypingEffect';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { useUIStore } from '@/store/uiStore';
+import { useI18n } from '@/i18n';
 import styles from './LoadingScreen.module.css';
-
-const BOOT_LINES = [
-  '> SYSTEM_INIT...',
-  '> Loading modules... [OK]',
-  '> Establishing connection... [OK]',
-  '> User profile loaded: Alexandre Bret',
-  '> Role: Développeur Web & Software',
-  '> Status: READY',
-  '> Launching interface...',
-];
 
 export function LoadingScreen() {
   const setLoading = useUIStore((s) => s.setLoading);
   const reduced = useReducedMotion();
+  const { t } = useI18n();
+  const bootLines = t.loading.lines;
   const { displayedLines, isComplete } = useTypingEffect(
-    BOOT_LINES,
+    bootLines,
     reduced ? 0 : 4
   );
 
@@ -32,7 +25,7 @@ export function LoadingScreen() {
 
   const progress = reduced
     ? 100
-    : Math.round((displayedLines.length / BOOT_LINES.length) * 100);
+    : Math.round((displayedLines.length / bootLines.length) * 100);
 
   return (
     <motion.div
@@ -44,7 +37,7 @@ export function LoadingScreen() {
       <div className={styles.scanline} aria-hidden="true" />
 
       {/* Contenu terminal */}
-      <div className={styles.terminal} role="status" aria-live="polite" aria-label="Chargement">
+      <div className={styles.terminal} role="status" aria-live="polite" aria-label={t.loading.ariaLabel}>
         <div className={styles.header}>
           <span className={styles.dot} style={{ background: '#ff5f56' }} />
           <span className={styles.dot} style={{ background: '#ffbd2e' }} />
@@ -53,7 +46,7 @@ export function LoadingScreen() {
         </div>
 
         <div className={styles.body}>
-          {(reduced ? BOOT_LINES : displayedLines).map((line, i) => (
+          {(reduced ? bootLines : displayedLines).map((line, i) => (
             <div key={i} className={styles.line}>
               <span
                 className={

@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useUIStore } from '@/store/uiStore';
 import { useActiveSection } from '@/hooks/useActiveSection';
+import { LanguageProvider, useI18n } from '@/i18n';
 import { CustomCursor } from '@/components/ui/CustomCursor';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
@@ -37,14 +38,15 @@ function MainContent() {
   );
 }
 
-export default function App() {
+function AppShell() {
   const isLoading = useUIStore((s) => s.isLoading);
+  const { t } = useI18n();
 
   return (
     <>
       {/* Skip to content */}
       <a href="#main-content" className="skip-to-content">
-        Aller au contenu
+        {t.skipToContent}
       </a>
 
       <CustomCursor />
@@ -64,5 +66,13 @@ export default function App() {
         )}
       </AnimatePresence>
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <AppShell />
+    </LanguageProvider>
   );
 }
