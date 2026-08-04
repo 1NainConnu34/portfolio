@@ -11,6 +11,10 @@
   box-shadow: 0 4px 24px rgba(0, 255, 213, 0.07);
 }
 
+.media {
+  margin-bottom: var(--space-lg);
+}
+
 .header {
   display: flex;
   align-items: flex-start;

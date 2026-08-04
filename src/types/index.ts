@@ -1,10 +1,17 @@
+export interface ProjectMedia {
+  type: 'image' | 'video';
+  /** URL résolue par Vite (import du fichier dans src/assets/projects) */
+  src: string;
+}
+
 export interface Project {
   id: string;
   title: string;
   description: string;
   technologies: string[];
-  link: string;
+  link?: string;
   github?: string;
+  media?: ProjectMedia;
 }
 
 export interface Experience {

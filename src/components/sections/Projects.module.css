@@ -100,6 +100,10 @@
   transform: translateY(-2px);
 }
 
+.detailMedia {
+  margin-bottom: var(--space-xl);
+}
+
 .detailDesc {
   font-family: var(--font-mono);
   font-size: var(--font-size-base);
@@ -114,6 +118,10 @@
   flex-wrap: wrap;
   gap: var(--space-sm);
   margin-bottom: var(--space-xl);
+}
+
+.detailTags:last-child {
+  margin-bottom: 0;
 }
 
 .detailCta {

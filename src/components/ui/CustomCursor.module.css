@@ -1,7 +1,32 @@
+/* === Trail canvas === */
+.trailCanvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: calc(var(--z-cursor) - 2);
+}
+
+/* === Radial glow following mouse — centré via translate(-50%,-50%) === */
+.glow {
+  position: fixed;
+  width: 700px;
+  height: 700px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(0, 255, 213, 0.07) 0%,
+    rgba(0, 255, 213, 0.03) 25%,
+    rgba(0, 255, 213, 0.01) 45%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: var(--z-grid);
+  border-radius: 50%;
+}
+
+/* === Cursor ring — position gérée par lerp en JS, CSS uniquement pour size/color === */
 .ring {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 32px;
   height: 32px;
   border: 1px solid var(--color-accent-cyan);
@@ -9,8 +34,8 @@
   pointer-events: none;
   z-index: var(--z-cursor);
   transition: width var(--transition-fast), height var(--transition-fast),
-    border-color var(--transition-fast), background var(--transition-fast), opacity var(--transition-fast);
-  mix-blend-mode: normal;
+    border-color var(--transition-fast), background var(--transition-fast),
+    opacity var(--transition-fast);
 }
 
 .ring.pointer {
@@ -20,17 +45,16 @@
   background: var(--color-accent-cyan-dim);
 }
 
+/* === Cursor dot — toujours à la position exacte, sans délai === */
 .dot {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 6px;
   height: 6px;
   background: var(--color-accent-cyan);
   border-radius: 50%;
   pointer-events: none;
   z-index: var(--z-cursor);
-  transition: transform 30ms linear, opacity var(--transition-fast);
+  box-shadow: 0 0 6px rgba(0, 255, 213, 0.8), 0 0 12px rgba(0, 255, 213, 0.3);
 }
 
 .hidden {
@@ -41,8 +65,10 @@
   opacity: 0;
 }
 
-/* Masqué sur mobile / tactile */
+/* Masqué sur tactile */
 @media (pointer: coarse) {
+  .trailCanvas,
+  .glow,
   .ring,
   .dot {
     display: none;

@@ -1,5 +1,15 @@
 import type { Project } from '@/types';
 
+import sh42Img from '@/assets/projects/42sh.png';
+import arcadeVideo from '@/assets/projects/arcade_FINAL.mp4';
+import corewarVideo from '@/assets/projects/corewar_FINAL.mp4';
+import myRpgVideo from '@/assets/projects/my_rpg_FINAL.mp4';
+import nanoTekspiceImg from '@/assets/projects/nano_tekspice.png';
+import plazzaVideo from '@/assets/projects/plazza_FINAL.mp4';
+import raytracerImg from '@/assets/projects/raytracer.png';
+import rtypeVideo from '@/assets/projects/rtype_FINAL.mp4';
+import zappyVideo from '@/assets/projects/zappy_FINAL.mp4';
+
 export const projects: Project[] = [
   {
     id: 'deadlockdle',
@@ -9,20 +19,60 @@ export const projects: Project[] = [
     link: 'https://deadlockdle.net',
   },
   {
-    id: 'portfolio',
-    title: 'Portfolio',
-    description: 'Ce portfolio cyberpunk, construit from scratch avec Vite, React et TypeScript. Animations via Framer Motion, CSS Modules pour le styling.',
-    technologies: ['React', 'TypeScript', 'Vite', 'Framer Motion', 'CSS Modules'],
-    link: 'https://1NainConnu34.github.io/portfolio',
-    github: 'https://github.com/1NainConnu34/portfolio',
+    id: 'rtype',
+    title: 'R-Type',
+    description: "Shoot'em up multijoueur en réseau développé en C++, avec un moteur maison et un protocole binaire client/serveur.",
+    technologies: ['C++', 'Réseau', 'Game Engine', 'CMake'],
+    media: { type: 'video', src: rtypeVideo },
   },
   {
-    id: 'phoenix-hunter',
-    title: 'Phoenix Hunter',
-    description: "Jeu en C inspiré de Duck Hunt. Développé avec la bibliothèque CSFML pour le rendu graphique et la gestion des événements.",
-    technologies: ['C', 'CSFML', 'Makefile'],
-    link: 'https://github.com/1NainConnu34/Phoenix-Hunter',
-    github: 'https://github.com/1NainConnu34/Phoenix-Hunter',
+    id: 'zappy',
+    title: 'Zappy',
+    description: "Simulation d'un monde en réseau où des équipes de drones autonomes collectent des ressources pour s'élever. Serveur, IA et visualisation graphique.",
+    technologies: ['C', 'C++', 'Python', 'Réseau', 'IA'],
+    media: { type: 'video', src: zappyVideo },
+  },
+  {
+    id: '42sh',
+    title: '42sh',
+    description: 'Shell UNIX complet en C : parsing, pipes, redirections, gestion des jobs, alias, historique et builtins.',
+    technologies: ['C', 'Unix', 'Makefile'],
+    media: { type: 'image', src: sh42Img },
+  },
+  {
+    id: 'plazza',
+    title: 'Plazza',
+    description: "Simulation d'une pizzeria : gestion multi-processus et multi-thread avec communication inter-processus et répartition de charge entre cuisines.",
+    technologies: ['C++', 'Threads', 'IPC', 'POO'],
+    media: { type: 'video', src: plazzaVideo },
+  },
+  {
+    id: 'raytracer',
+    title: 'Raytracer',
+    description: 'Moteur de rendu 3D par lancer de rayons en C++ : primitives, lumières, ombres, réflexions et scènes configurables.',
+    technologies: ['C++', 'Maths 3D', 'POO'],
+    media: { type: 'image', src: raytracerImg },
+  },
+  {
+    id: 'corewar',
+    title: 'Corewar',
+    description: "Implémentation du jeu Corewar : assembleur, machine virtuelle exécutant les champions et champions écrits en assembleur maison.",
+    technologies: ['C', 'Assembleur', 'Makefile'],
+    media: { type: 'video', src: corewarVideo },
+  },
+  {
+    id: 'arcade',
+    title: 'Arcade',
+    description: "Plateforme de jeux rétro où bibliothèques graphiques et jeux sont chargés dynamiquement à chaud via des librairies partagées.",
+    technologies: ['C++', 'dlopen', 'POO'],
+    media: { type: 'video', src: arcadeVideo },
+  },
+  {
+    id: 'nano-tekspice',
+    title: 'Nano Tekspice',
+    description: 'Simulateur de circuits logiques en C++ : composants élémentaires, portes, chaînage des liens et shell interactif de simulation.',
+    technologies: ['C++', 'POO', 'Parsing'],
+    media: { type: 'image', src: nanoTekspiceImg },
   },
   {
     id: 'my-rpg',
@@ -31,5 +81,14 @@ export const projects: Project[] = [
     technologies: ['C', 'CSFML', 'Makefile'],
     link: 'https://github.com/1NainConnu34/my_rpg',
     github: 'https://github.com/1NainConnu34/my_rpg',
+    media: { type: 'video', src: myRpgVideo },
+  },
+  {
+    id: 'phoenix-hunter',
+    title: 'Phoenix Hunter',
+    description: "Jeu en C inspiré de Duck Hunt. Développé avec la bibliothèque CSFML pour le rendu graphique et la gestion des événements.",
+    technologies: ['C', 'CSFML', 'Makefile'],
+    link: 'https://github.com/1NainConnu34/Phoenix-Hunter',
+    github: 'https://github.com/1NainConnu34/Phoenix-Hunter',
   },
 ];

@@ -64,7 +64,7 @@
   border: none;
   padding: 0;
   position: relative;
-  transition: color var(--transition-base);
+  transition: color var(--transition-base), text-shadow var(--transition-base);
 }
 
 .linkSlash {
@@ -77,6 +77,7 @@
 .link:hover,
 .link.active {
   color: var(--color-accent-cyan);
+  text-shadow: 0 0 8px rgba(0, 255, 213, 0.5);
 }
 
 .link.active .linkSlash,

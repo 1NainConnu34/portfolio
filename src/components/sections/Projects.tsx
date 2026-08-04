@@ -6,6 +6,7 @@ import { Tag } from '@/components/ui/Tag';
 import { GlowButton } from '@/components/ui/GlowButton';
 import { Icon } from '@/components/ui/Icon';
 import { ProjectCard } from './ProjectCard';
+import { ProjectMedia } from './ProjectMedia';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { projects } from '@/data/projects';
 import styles from './Projects.module.css';
@@ -68,6 +69,12 @@ export function Projects() {
                 </div>
               </header>
 
+              {project.media && (
+                <div className={styles.detailMedia}>
+                  <ProjectMedia media={project.media} title={project.title} autoPlay />
+                </div>
+              )}
+
               <p className={styles.detailDesc}>{project.description}</p>
 
               <div className={styles.detailTags}>
@@ -76,16 +83,18 @@ export function Projects() {
                 ))}
               </div>
 
-              <div className={styles.detailCta}>
-                <GlowButton
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Icon name="external" size={14} />
-                  Voir le projet
-                </GlowButton>
-              </div>
+              {project.link && (
+                <div className={styles.detailCta}>
+                  <GlowButton
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon name="external" size={14} />
+                    Voir le projet
+                  </GlowButton>
+                </div>
+              )}
             </motion.article>
           </AnimatePresence>
         </div>

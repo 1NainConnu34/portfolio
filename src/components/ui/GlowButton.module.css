@@ -7,11 +7,40 @@
   font-size: var(--font-size-sm);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: box-shadow var(--transition-base), background var(--transition-base), color var(--transition-base);
+  transition: box-shadow var(--transition-base), background var(--transition-base),
+    color var(--transition-base), border-color var(--transition-base);
   position: relative;
   overflow: hidden;
 }
 
+/* Sweep light effect */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 213, 0.12),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.btn:hover::before {
+  animation: sweep 0.5s ease forwards;
+}
+
+@keyframes sweep {
+  to {
+    left: 180%;
+  }
+}
+
+/* Primary variant */
 .primary {
   color: var(--color-accent-cyan);
   border: 1px solid var(--color-accent-cyan-border);
@@ -21,10 +50,12 @@
 .primary:hover,
 .primary:focus-visible {
   background: var(--color-accent-cyan-dim);
-  box-shadow: var(--glow-cyan);
+  box-shadow: var(--glow-cyan), inset 0 0 20px rgba(0, 255, 213, 0.05);
   color: var(--color-accent-cyan);
+  border-color: rgba(0, 255, 213, 0.6);
 }
 
+/* Ghost variant */
 .ghost {
   color: var(--color-text-secondary);
   border: 1px solid var(--color-border);
@@ -35,4 +66,11 @@
 .ghost:focus-visible {
   color: var(--color-text-primary);
   border-color: var(--color-border-bright);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn::before {
+    display: none;
+  }
 }
