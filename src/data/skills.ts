@@ -15,7 +15,15 @@ export const skills: SkillGroup[] = [
   },
   {
     category: 'Languages',
-    items: ['C', 'C++'],
+    items: ['C', 'C++', 'Python', 'Assembleur'],
+  },
+  {
+    category: 'Systems & Network',
+    items: ['Programmation réseau', 'Multithreading', 'IPC / Multi-processus', 'Unix / POSIX', 'Shell / Bash'],
+  },
+  {
+    category: 'Graphics & Games',
+    items: ['SFML / CSFML', 'Moteur de jeu', 'Rendu 3D / Raytracing'],
   },
   {
     category: 'Mobile',
@@ -23,6 +31,6 @@ export const skills: SkillGroup[] = [
   },
   {
     category: 'Tools',
-    items: ['Git', 'GitHub', 'Linux', 'WordPress', 'Docker', 'Vite'],
+    items: ['Git', 'GitHub', 'Linux', 'Docker', 'Vite', 'Makefile', 'CMake', 'WordPress', 'Figma', 'Trello', 'Jira'],
   },
 ];

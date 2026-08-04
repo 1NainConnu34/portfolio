@@ -9,7 +9,7 @@ export const socials: SocialLink[] = [
   },
   {
     platform: 'LinkedIn',
-    url: 'https://linkedin.com/in/alexandre-bret-68440b260/',
+    url: 'https://linkedin.com/in/alexandre-bret/',
     label: 'Mon profil LinkedIn',
     icon: 'linkedin',
   },

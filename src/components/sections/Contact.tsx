@@ -14,7 +14,7 @@ const TERMINAL_LINES = [
   { type: 'prompt', text: '$ cat contact.txt' },
   { type: 'output', text: `  Email    : ${EMAIL}` },
   { type: 'output', text: '  GitHub   : github.com/1NainConnu34' },
-  { type: 'output', text: '  LinkedIn : linkedin.com/in/alexandre-bret-68440b260' },
+  { type: 'output', text: '  LinkedIn : linkedin.com/in/alexandre-bret' },
   { type: 'prompt', text: "$ echo \"Envoie-moi un message !\"" },
   { type: 'output', text: '  Envoie-moi un message !' },
 ];
